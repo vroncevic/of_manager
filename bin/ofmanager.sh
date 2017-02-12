@@ -5,202 +5,140 @@
 # @date    Mon Aug 24 17:03:32 2015
 # @company Frobas IT Department, www.frobas.com 2015
 # @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
-#  
+#
 UTIL_ROOT=/root/scripts
 UTIL_VERSION=ver.1.0
-UTIL=$UTIL_ROOT/sh-util-srv/$UTIL_VERSION
-UTIL_LOG=$UTIL/log
+UTIL=${UTIL_ROOT}/sh_util/${UTIL_VERSION}
+UTIL_LOG=${UTIL}/log
 
-. $UTIL/bin/devel.sh
-. $UTIL/bin/usage.sh
-. $UTIL/bin/checkroot.sh
-. $UTIL/bin/checktool.sh
-. $UTIL/bin/checkop.sh
-. $UTIL/bin/logging.sh
-. $UTIL/bin/sendmail.sh
-. $UTIL/bin/loadconf.sh
-. $UTIL/bin/loadutilconf.sh
-. $UTIL/bin/progressbar.sh
+.	${UTIL}/bin/devel.sh
+.	${UTIL}/bin/usage.sh
+.	${UTIL}/bin/check_root.sh
+.	${UTIL}/bin/check_tool.sh
+.	${UTIL}/bin/check_op.sh
+.	${UTIL}/bin/logging.sh
+.	${UTIL}/bin/load_conf.sh
+.	${UTIL}/bin/load_util_conf.sh
+.	${UTIL}/bin/progress_bar.sh
 
-OFMANAGER_NAME=ofmanager
+OFMANAGER_TOOL=ofmanager
 OFMANAGER_VERSION=ver.1.0
-OFMANAGER_HOME=$UTIL_ROOT/$OFMANAGER_NAME/$OFMANAGER_VERSION
-OFMANAGER_CFG=$OFMANAGER_HOME/conf/$OFMANAGER_NAME.cfg
-OFMANAGER_UTIL_CFG=$OFMANAGER_HOME/conf/${OFMANAGER_TOOL}_util.cfg
-OFMANAGER_LOG=$OFMANAGER_HOME/log
+OFMANAGER_HOME=${UTIL_ROOT}/${OFMANAGER_TOOL}/${OFMANAGER_VERSION}
+OFMANAGER_CFG=${OFMANAGER_HOME}/conf/${OFMANAGER_TOOL}.cfg
+OFMANAGER_UTIL_CFG=${OFMANAGER_HOME}/conf/${OFMANAGER_TOOL}_util.cfg
+OFMANAGER_LOG=${OFMANAGER_HOME}/log
+
+.	${OFMANAGER_HOME}/bin/of_operation.sh
 
 declare -A OFMANAGER_USAGE=(
-	[TOOL_NAME]="__$OFMANAGER_NAME"
+	[TOOL_NAME]="${OFMANAGER_TOOL}"
 	[ARG1]="[OPERATION] start | stop | restart | status | version"
 	[EX-PRE]="# Start OpenOffice service"
-	[EX]="__$TOOL_NAME start"	
+	[EX]="${OFMANAGER_TOOL} start"
 )
 
-declare -A OFMANAGER_LOG=(
-	[TOOL]="$TOOL_NAME"
+declare -A OFMANAGER_LOGGING=(
+	[TOOL]="${OFMANAGER_TOOL}"
 	[FLAG]="info"
-	[PATH]="$TOOL_LOG"
-	[MSG]=""
+	[PATH]="${OFMANAGER_LOG}"
+	[MSG]="None"
 )
 
 declare -A PB_STRUCTURE=(
-	[BAR_WIDTH]=50
-	[MAX_PERCENT]=100
+	[BW]=50
+	[MP]=100
 	[SLEEP]=0.01
 )
 
-TOOL_DEBUG="false"
+TOOL_DBG="false"
+TOOL_LOG="false"
+TOOL_NOTIFY="false"
 
 #
-# @brief  Run operation on OpenOffice service
-# @param  Value required operation to be done
-# @retval Success return 0, else return 1
-#
-# @usage
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-#
-# OPERATION="start"
-# __ofoperation "$OPERATION"
-# STATUS=$?
-#
-# if [ $STATUS -eq $SUCCESS ]; then
-#	# true
-# else
-#	# false
-# fi
-#
-function __ofoperation() {
-    local OPERATION=$1
-    if [ -n "$OPERATION" ]; then
-        if [ "$OPERATION" == "restart" ]; then
-            eval "${configofmanagerutil[SYSTEMCTL]} stop openoffice.service"
-			sleep 2
-            eval "${configofmanagerutil[SYSTEMCTL]} start openoffice.service"
-        else
-			if [ "$TOOL_DEBUG" == "true" ]; then
-				printf "%s\n" "CMD: ${configofmanagerutil[SYSTEMCTL]} $OPERATION openoffice.service"
-			fi
-            eval "${configofmanagerutil[SYSTEMCTL]} $OPERATION openoffice.service"
-        fi
-        return $SUCCESS
-    fi
-	return $NOT_SUCCESS
-}
-
-#
-# @brief  Main function  
+# @brief  Main function
 # @param  Value required operation to be done
 # @retval Function __ofmanger exit with integer value
-#			0   - tool finished with success operation 
-#			128 - missing argument(s) from cli 
-#			129 - failed to load tool script configuration from file 
-#			130 - failed to load tool script utilities configuration from file
-#			131 - missing external tool systemctl
+#			0   - tool finished with success operation
+#			128 - missing argument(s) from cli
+#			129 - failed to load tool script configuration from files
+#			130 - missing external tool systemctl
+#			131 - wrong argument
 #			132 - falied to finish operation
-#			133 - wrong argument
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #
-# __smbmanager "$OPERATION"
+# __smbmanager "$OP"
 #
 function __ofmanager() {
-    local OPERATION=$1
-    if [ -n "$OPERATION" ]; then
-		local FUNC=${FUNCNAME[0]}
-		local MSG="Loading basic and util configuration"
-		printf "$SEND" "$OFMANAGER_TOOL" "$MSG"
-		__progressbar PB_STRUCTURE
-		printf "%s\n\n" ""
-		declare -A configofmanager=()
-		__loadconf $OFMANAGER_CFG configofmanager
-		local STATUS=$?
+	local OP=$1
+	if [ -n "${OP}" ]; then
+		local FUNC=${FUNCNAME[0]} MSG="None" STATUS_CONF STATUS_CONF_UTIL STATUS
+		MSG="Loading basic and util configuration!"
+		__info_debug_message "$MSG" "$FUNC" "$OFMANAGER_TOOL"
+		__progress_bar PB_STRUCTURE
+		declare -A config_ofmanager=()
+		__load_conf "$OFMANAGER_CFG" config_ofmanager
+		STATUS_CONF=$?
+		declare -A config_ofmanager_util=()
+		__load_util_conf "$OFMANAGER_UTIL_CFG" config_ofmanager_util
+		STATUS_CONF_UTIL=$?
+		declare -A STATUS_STRUCTURE=([1]=$STATUS_CONF [2]=$STATUS_CONF_UTIL)
+		__check_status STATUS_STRUCTURE
+		STATUS=$?
 		if [ $STATUS -eq $NOT_SUCCESS ]; then
-			MSG="Failed to load tool script configuration"
-			if [ "$TOOL_DBG" == "true" ]; then
-				printf "$DSTA" "$OFMANAGER_TOOL" "$FUNC" "$MSG"
-			else
-				printf "$SEND" "$OFMANAGER_TOOL" "$MSG"
-			fi
+			MSG="Force exit!"
+			__info_debug_message_end "$MSG" "$FUNC" "$OFMANAGER_TOOL"
 			exit 129
 		fi
-		declare -A configofmanagerutil=()
-		__loadutilconf $OFMANAGER_UTIL_CFG configofmanagerutil
+		TOOL_DBG=${config_ofmanager[DEBUGGING]}
+		TOOL_LOG=${config_ofmanager[LOGGING]}
+		TOOL_NOTIFY=${config_ofmanager[EMAILING]}
+		MSG=""
+		__info_debug_message "$MSG" "$FUNC" "$OFMANAGER_TOOL"
+		local SYSCTL=${config_ofmanager_util[SYSTEMCTL]}
+		__check_tool "${SYSCTL}"
 		STATUS=$?
 		if [ $STATUS -eq $NOT_SUCCESS ]; then
-			MSG="Failed to load tool script utilities configuration"
-			if [ "$TOOL_DBG" == "true" ]; then
-				printf "$DSTA" "$OFMANAGER_TOOL" "$FUNC" "$MSG"
-			else
-				printf "$SEND" "$OFMANAGER_TOOL" "$MSG"
-			fi
+			MSG="Force exit!"
+			__info_debug_message_end "$MSG" "$FUNC" "$OFMANAGER_TOOL"
 			exit 130
 		fi
-		if [ "$TOOL_DEBUG" == "true" ]; then
-			printf "%s\n" "[OpenOffice Server Manager]"
-		fi
-		__checktool "${configofmanagerutil[SYSTEMCTL]}"
+		local OPERATIONS=${config_ofmanager_util[OFMANAGER_OPERATIONS]}
+		IFS=' ' read -ra OPS <<< "${OPERATIONS}"
+		__check_op "$OP" "${OPS[*]}"
 		STATUS=$?
-		if [ $STATUS -eq $NOT_SUCCESS ]; then
-			MSG="Missing external tool ${configofmanagerutil[SYSTEMCTL]}"
-			if [ "${configofmanager[LOGGING]}" == "true" ]; then
-				OFMANAGER_LOGGING[LOG_MSGE]="$MSG"
-				OFMANAGER_LOGGING[LOG_FLAG]="error"
-				__logging OFMANAGER_LOGGING
-			fi
-			if [ "${configofmanager[EMAILING]}" == "true" ]; then
-				__sendmail "$MSG" "${configofmanager[ADMIN_EMAIL]}"
-			fi
-			exit 131
-		fi
-		OF_OP_LIST=( start stop restart status version )
-        __checkop "$OPERATION" "${OF_OP_LIST[*]}"
-        STATUS=$?
-        if [ $STATUS -eq $SUCCESS ]; then
-            __ofoperation "$OPERATION"
+		if [ $STATUS -eq $SUCCESS ]; then
+			__of_operation "${OP}"
 			STATUS=$?
 			if [ $STATUS -eq $NOT_SUCCESS ]; then
-				MSG="Failed to finish $OPERATION"
-				if [ "${configofmanager[LOGGING]}" == "true" ]; then
-					OFMANAGER_LOGGING[LOG_MSGE]="$MSG"
-					OFMANAGER_LOGGING[LOG_FLAG]="error"
-					__logging OFMANAGER_LOGGING
-				fi
-				if [ "$TOOL_DBG" == "true" ]; then
-					printf "$DSTA" "$OFMANAGER_TOOL" "$FUNC" "$MSG"
-				else
-					printf "$SEND" "$OFMANAGER_TOOL" "$MSG"
-				fi
+				MSG="Failed to finish ${OP}"
+				__info_debug_message "$MSG" "$FUNC" "$OFMANAGER_TOOL"
 				exit 132
 			fi
-			if [ "$TOOL_DBG" == "true" ]; then
-				printf "$DSTA" "$OFMANAGER_TOOL" "$FUNC" "Done"
-			else
-				printf "$SEND" "$OFMANAGER_TOOL" "Done"
-			fi
-		    exit 0
-        fi
+			__info_debug_message_end "Done" "$FUNC" "$OFMANAGER_TOOL"
+			exit 0
+		fi
 		__usage OFMANAGER_USAGE
-		exit 133
-    fi
+		exit 131
+	fi
 	__usage OFMANAGER_USAGE
-    exit 128
+	exit 128
 }
 
 #
 # @brief Main entry point
 # @param required value operation to be done
 # @exitval Script tool ofmanger exit with integer value
-#			0   - tool finished with success operation 
-# 			127 - un tool script as root user from cli
-#			128 - missing argument(s) from cli 
-#			129 - failed to load tool script configuration from file 
-#			130 - failed to load tool script utilities configuration from file
-#			131 - missing external tool systemctl
+#			0   - tool finished with success operation
+#			127 - un tool script as root user from cli
+#			128 - missing argument(s) from cli
+#			129 - failed to load tool script configuration from files
+#			130 - missing external tool systemctl
+#			131 - wrong argument
 #			132 - falied to finish operation
-#			133 - wrong argument
 #
-printf "\n%s\n%s\n\n" "$OFMANAGER_NAME $OFMANAGER_VERSION" "`date`"
-__checkroot
+printf "\n%s\n%s\n\n" "${OFMANAGER_NAME} ${OFMANAGER_VERSION}" "`date`"
+__check_root
 STATUS=$?
 if [ $STATUS -eq $SUCCESS ]; then
 	__ofmanager $1
