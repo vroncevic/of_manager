@@ -30,7 +30,7 @@ OF_MANAGER_LOG=${OF_MANAGER_HOME}/log
 
 .    ${OF_MANAGER_HOME}/bin/of_operation.sh
 
-declare -A OF_MANAGER_USAGE=(
+declare -A OF_MANAGER_Usage=(
     [TOOL_NAME]="${OF_MANAGER_TOOL}"
     [ARG1]="[OPERATION] start | stop | restart | status | version"
     [EX-PRE]="# Start OpenOffice service"
@@ -117,10 +117,10 @@ function __of_manager {
             info_debug_message_end "Done" "$FUNC" "$OF_MANAGER_TOOL"
             exit 0
         fi
-        usage OF_MANAGER_USAGE
+        usage OF_MANAGER_Usage
         exit 131
     fi
-    usage OF_MANAGER_USAGE
+    usage OF_MANAGER_Usage
     exit 128
 }
 

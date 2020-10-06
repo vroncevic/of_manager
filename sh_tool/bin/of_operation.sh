@@ -7,7 +7,7 @@
 # @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #
 
-declare -A OFMANAGER_OPERATION_USAGE=(
+declare -A OFMANAGER_OPERATION_Usage=(
     [TOOL_NAME]="__of_operation"
     [ARG1]="[OPERATION] start | stop | restart | status | version"
     [EX-PRE]="# Start OpenOffice service"
@@ -49,7 +49,7 @@ function __of_operation {
         info_debug_message_end "Done" "$FUNC" "$OF_MANAGER_TOOL"
         return $SUCCESS
     fi
-    usage OFMANAGER_OPERATION_USAGE
+    usage OFMANAGER_OPERATION_Usage
     return $NOT_SUCCESS
 }
 

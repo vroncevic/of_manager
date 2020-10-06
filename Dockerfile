@@ -21,9 +21,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
  wget \
  unzip \
  ca-certificates \
- openssl \
- openoffice.org
+ openssl
 
+RUN wget https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.7/binaries/en-US/Apache_OpenOffice_4.1.7_Linux_x86-64_install-deb_en-US.tar.gz
+RUN tar xvf Apache_OpenOffice_4.1.7_Linux_x86-64_install-deb_en-US.tar.gz
+RUN cd en-US/DEBS && dpkg -i  *.deb
+RUN rm -Rf en-US/
 RUN wget https://github.com/vroncevic/sh_util/archive/v1.0.0.zip
 RUN unzip v1.0.0.zip
 RUN find /sh_util-1.0.0/ -name "*.editorconfig" -type f -exec rm -Rf {} \;
