@@ -1,3 +1,5 @@
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/of_manager/dev/docs/of_manager_logo.png" width="25%">
+
 # Office management
 
 **of_manager** is shell tool for controlling/operating Open Office.
@@ -32,11 +34,11 @@ Navigate to release **[page](https://github.com/vroncevic/of_manager/releases)**
 To install **of_manager** type the following:
 
 ```
-tar xvzf of_manager-x.y.z.tar.gz
-cd of_manager-x.y.z
-cp -R ~/sh_tool/bin/   /root/scripts/of_manager/ver.1.0/
-cp -R ~/sh_tool/conf/  /root/scripts/of_manager/ver.1.0/
-cp -R ~/sh_tool/log/   /root/scripts/of_manager/ver.1.0/
+tar xvzf of_manager-x.y.tar.gz
+cd of_manager-x.y
+cp -R ~/sh_tool/bin/   /root/scripts/of_manager/ver.x.y/
+cp -R ~/sh_tool/conf/  /root/scripts/of_manager/ver.x.y/
+cp -R ~/sh_tool/log/   /root/scripts/of_manager/ver.x.y/
 ```
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/of_manager/dev/docs/setup_tree.png)
@@ -49,7 +51,7 @@ Or You can use docker to create image/container.
 
 ```
 # Create symlink for shell tool
-ln -s /root/scripts/of_manager/ver.1.0/bin/of_manager.sh /root/bin/of_manager
+ln -s /root/scripts/of_manager/ver.x.y/bin/of_manager.sh /root/bin/of_manager
 
 # Setting PATH
 export PATH=${PATH}:/root/bin/
@@ -61,7 +63,7 @@ of_manager version
 ### Dependencies
 
 **of_manager** requires next modules and libraries:
-* sh_util [https://github.com/vroncevic/sh_util](https://github.com/vroncevic/sh_util)
+* of_manager [https://github.com/vroncevic/of_manager](https://github.com/vroncevic/of_manager)
 
 ### Shell tool structure
 
@@ -69,7 +71,7 @@ of_manager version
 
 Code structure:
 ```
-.
+sh_tool/
 ├── bin/
 │   ├── of_manager.sh
 │   └── of_operation.sh
@@ -92,7 +94,7 @@ More documentation and info at:
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2015 by [vroncevic.github.io/of_manager](https://vroncevic.github.io/of_manager)
+Copyright (C) 2016 by [vroncevic.github.io/of_manager](https://vroncevic.github.io/of_manager)
 
 **of_manager** is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,

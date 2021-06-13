@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # @brief   OpenOffice Server Management (wrapper)
-# @version ver.1.0.0
+# @version ver.1.0
 # @date    Mon Aug 24 17:03:32 2015
 # @company Frobas IT Department, www.frobas.com 2015
 # @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
@@ -30,7 +30,7 @@ OF_MANAGER_LOG=${OF_MANAGER_HOME}/log
 
 .    ${OF_MANAGER_HOME}/bin/of_operation.sh
 
-declare -A OF_MANAGER_Usage=(
+declare -A OF_MANAGER_USAGE=(
     [TOOL_NAME]="${OF_MANAGER_TOOL}"
     [ARG1]="[OPERATION] start | stop | restart | status | version"
     [EX-PRE]="# Start OpenOffice service"
@@ -117,10 +117,10 @@ function __of_manager {
             info_debug_message_end "Done" "$FUNC" "$OF_MANAGER_TOOL"
             exit 0
         fi
-        usage OF_MANAGER_Usage
+        usage OF_MANAGER_USAGE
         exit 131
     fi
-    usage OF_MANAGER_Usage
+    usage OF_MANAGER_USAGE
     exit 128
 }
 
