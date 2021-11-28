@@ -33,11 +33,16 @@ other information that should be provided before the tool is installed.
 Installation
 -------------
 
+|Debian Linux OS|
+
+.. |Debian Linux OS| image:: https://raw.githubusercontent.com/vroncevic/of_manager/dev/docs/debtux.png
+   :target: https://www.debian.org
+
 Navigate to release `page`_ download and extract release archive.
 
 .. _page: https://github.com/vroncevic/of_manager/releases
 
-To install **of_manager** type the following:
+To install **of_manager** type the following
 
 .. code-block:: bash
 
@@ -57,7 +62,7 @@ Or You can use Docker to create image/container.
 Dependencies
 -------------
 
-**of_manager** requires next modules and libraries:
+**of_manager** requires next modules and libraries
 
 * sh_util `https://github.com/vroncevic/sh_util <https://github.com/vroncevic/sh_util>`_
 
@@ -66,16 +71,19 @@ Shell tool structure
 
 **of_manager** is based on MOP.
 
-Code structure:
+Shell tool structure
 
 .. code-block:: bash
 
    sh_tool/
    ├── bin/
+   │   ├── center.sh
+   │   ├── display_logo.sh
    │   ├── of_manager.sh
    │   └── of_operation.sh
    ├── conf/
    │   ├── of_manager.cfg
+   │   ├── of_manager.logo
    │   └── of_manager_util.cfg
    └── log/
        └── of_manager.log

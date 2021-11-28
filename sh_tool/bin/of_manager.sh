@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# @brief   OpenOffice Server Management (wrapper)
-# @version ver.1.0
-# @date    Mon Aug 24 17:03:32 2015
-# @company Frobas IT Department, www.frobas.com 2015
-# @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
+# @brief   Open Office Manager
+# @version ver.2.0
+# @date    Sun 28 Nov 2021 08:24:52 AM CET
+# @company None, free software to use 2021
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 UTIL_ROOT=/root/scripts
 UTIL_VERSION=ver.1.0
@@ -22,26 +22,32 @@ UTIL_LOG=${UTIL}/log
 .    ${UTIL}/bin/progress_bar.sh
 
 OF_MANAGER_TOOL=of_manager
-OF_MANAGER_VERSION=ver.1.0
+OF_MANAGER_VERSION=ver.2.0
 OF_MANAGER_HOME=${UTIL_ROOT}/${OF_MANAGER_TOOL}/${OF_MANAGER_VERSION}
 OF_MANAGER_CFG=${OF_MANAGER_HOME}/conf/${OF_MANAGER_TOOL}.cfg
 OF_MANAGER_UTIL_CFG=${OF_MANAGER_HOME}/conf/${OF_MANAGER_TOOL}_util.cfg
+OF_MANAGER_LOGO=${OF_MANAGER_HOME}/conf/${OF_MANAGER_TOOL}.logo
 OF_MANAGER_LOG=${OF_MANAGER_HOME}/log
 
+tabs 4
+CONSOLE_WIDTH=$(stty size | awk '{print $2}')
+
+.    ${OF_MANAGER_HOME}/bin/center.sh
+.    ${OF_MANAGER_HOME}/bin/display_logo.sh
 .    ${OF_MANAGER_HOME}/bin/of_operation.sh
 
 declare -A OF_MANAGER_USAGE=(
-    [TOOL_NAME]="${OF_MANAGER_TOOL}"
-    [ARG1]="[OPERATION] start | stop | restart | status | version"
-    [EX-PRE]="# Start OpenOffice service"
-    [EX]="${OF_MANAGER_TOOL} start"
+    [USAGE_TOOL]="${OF_MANAGER_TOOL}"
+    [USAGE_ARG1]="[OPERATION] start | stop | restart | status | version"
+    [USAGE_EX_PRE]="# Start OpenOffice service"
+    [USAGE_EX]="${OF_MANAGER_TOOL} start"
 )
 
 declare -A OF_MANAGER_LOGGING=(
-    [TOOL]="${OF_MANAGER_TOOL}"
-    [FLAG]="info"
-    [PATH]="${OF_MANAGER_LOG}"
-    [MSG]="None"
+    [LOG_TOOL]="${OF_MANAGER_TOOL}"
+    [LOG_FLAG]="info"
+    [LOG_PATH]="${OF_MANAGER_LOG}"
+    [LOG_MSGE]="None"
 )
 
 declare -A PB_STRUCTURE=(
@@ -71,6 +77,7 @@ TOOL_NOTIFY="false"
 #
 function __of_manager {
     local OP=$1
+    display_logo
     if [ -n "${OP}" ]; then
         local FUNC=${FUNCNAME[0]} MSG="None"
         local STATUS_CONF STATUS_CONF_UTIL STATUS
@@ -144,4 +151,3 @@ if [ $STATUS -eq $SUCCESS ]; then
 fi
 
 exit 127
-
