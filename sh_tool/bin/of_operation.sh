@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# @brief   Run operation on OpenOffice service
-# @version ver.1.0
-# @date    Mon Aug 24 17:03:32 2015
-# @company Frobas IT Department, www.frobas.com 2015
-# @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
+# @brief   Open Office Manager
+# @version ver.2.0
+# @date    Sun 28 Nov 2021 08:24:52 AM CET
+# @company None, free software to use 2021
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
 declare -A OFMANAGER_OPERATION_USAGE=(

@@ -16,13 +16,13 @@
 FROM debian:10
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive \
- apt-get install -yq --no-install-recommends \
- tree \
- htop \
- wget \
- unzip \
- ca-certificates \
- openssl
+    apt-get install -yq --no-install-recommends \
+    tree \
+    htop \
+    wget \
+    unzip \
+    ca-certificates \
+    openssl
 
 RUN wget https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.7/binaries/en-US/Apache_OpenOffice_4.1.7_Linux_x86-64_install-deb_en-US.tar.gz
 RUN tar xvf Apache_OpenOffice_4.1.7_Linux_x86-64_install-deb_en-US.tar.gz
@@ -39,12 +39,12 @@ RUN rm -Rf v1.0.zip sh_util-1.0
 RUN mkdir /sh_tool/
 COPY sh_tool /sh_tool/
 RUN find /sh_tool/ -name "*.editorconfig" -type f -exec rm -Rf {} \;
-RUN mkdir -p /root/scripts/of_manager/ver.1.0/
+RUN mkdir -p /root/scripts/of_manager/ver.2.0/
 RUN mkdir /root/bin/
-RUN cp -R /sh_tool/bin/   /root/scripts/of_manager/ver.1.0/
-RUN cp -R /sh_tool/conf/  /root/scripts/of_manager/ver.1.0/
-RUN cp -R /sh_tool/log/   /root/scripts/of_manager/ver.1.0/
+RUN cp -R /sh_tool/bin/   /root/scripts/of_manager/ver.2.0/
+RUN cp -R /sh_tool/conf/  /root/scripts/of_manager/ver.2.0/
+RUN cp -R /sh_tool/log/   /root/scripts/of_manager/ver.2.0/
 RUN rm -Rf /sh_tool/
-RUN chmod -R 755 /root/scripts/of_manager/ver.1.0/
-RUN ln -s /root/scripts/of_manager/ver.1.0/bin/of_manager.sh /root/bin/of_manager
-RUN tree /root/scripts/of_manager/ver.1.0/
+RUN chmod -R 755 /root/scripts/of_manager/ver.2.0/
+RUN ln -s /root/scripts/of_manager/ver.2.0/bin/of_manager.sh /root/bin/of_manager
+RUN tree /root/scripts/of_manager/ver.2.0/

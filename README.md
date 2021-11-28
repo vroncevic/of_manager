@@ -29,9 +29,11 @@ other information that should be provided before the tool is installed.
 
 ### Installation
 
+![Debian Linux OS](https://raw.githubusercontent.com/vroncevic/of_manager/dev/docs/debtux.png)
+
 Navigate to release **[page](https://github.com/vroncevic/of_manager/releases)** download and extract release archive.
 
-To install **of_manager** type the following:
+To install **of_manager** type the following
 
 ```
 tar xvzf of_manager-x.y.tar.gz
@@ -41,7 +43,35 @@ cp -R ~/sh_tool/conf/  /root/scripts/of_manager/ver.x.y/
 cp -R ~/sh_tool/log/   /root/scripts/of_manager/ver.x.y/
 ```
 
-![alt tag](https://raw.githubusercontent.com/vroncevic/of_manager/dev/docs/setup_tree.png)
+Self generated setup script and execution
+```
+./of_manager_setup.sh
+
+[setup] installing App/Tool/Script of_manager
+	Sun 28 Nov 2021 08:30:35 AM CET
+[setup] clean up App/Tool/Script structure
+[setup] copy App/Tool/Script structure
+[setup] remove github editor configuration files
+[setup] set App/Tool/Script permission
+[setup] create symbolic link of App/Tool/Script
+[setup] done
+
+/root/scripts/of_manager/ver.2.0/
+├── bin/
+│   ├── center.sh
+│   ├── display_logo.sh
+│   ├── of_manager.sh
+│   └── of_operation.sh
+├── conf/
+│   ├── of_manager.cfg
+│   ├── of_manager.logo
+│   └── of_manager_util.cfg
+└── log/
+    └── of_manager.log
+
+3 directories, 8 files
+lrwxrwxrwx 1 root root 50 Nov 28 08:30 /root/bin/of_manager -> /root/scripts/of_manager/ver.2.0/bin/of_manager.sh
+```
 
 Or You can use docker to create image/container.
 
@@ -57,26 +87,54 @@ ln -s /root/scripts/of_manager/ver.x.y/bin/of_manager.sh /root/bin/of_manager
 export PATH=${PATH}:/root/bin/
 
 # Control/operating Open Office
-of_manager version
+of_manager 
+
+of_manager ver.2.0
+Sun 28 Nov 2021 08:47:29 AM CET
+
+[check_root] Check permission for current session? [ok]
+[check_root] Done
+
+	                                                         
+	        __                                               
+	  ___  / _|  _ __ ___   __ _ _ __   __ _  __ _  ___ _ __ 
+	 / _ \| |_  | '_ ` _ \ / _` | '_ \ / _` |/ _` |/ _ \ '__|
+	| (_) |  _| | | | | | | (_| | | | | (_| | (_| |  __/ |   
+	 \___/|_|   |_| |_| |_|\__,_|_| |_|\__,_|\__, |\___|_|   
+	                                         |___/           
+	                                                         
+		Info   github.io/op_manager ver.2.0 
+		Issue  github.io/issue
+		Author vroncevic.github.io
+
+  [Usage] of_manager [OPTIONS]
+  [OPTIONS]
+  [OPERATION] start | stop | restart | status | version
+  # Start OpenOffice service
+  of_manager start
+  [help | h] print this option
 ```
 
 ### Dependencies
 
-**of_manager** requires next modules and libraries:
-* of_manager [https://github.com/vroncevic/of_manager](https://github.com/vroncevic/of_manager)
+**of_manager** requires next modules and libraries
+* sh_util [https://github.com/vroncevic/sh_util](https://github.com/vroncevic/sh_util)
 
 ### Shell tool structure
 
 **of_manager** is based on MOP.
 
-Code structure:
+Shell tool structure
 ```
 sh_tool/
 ├── bin/
+│   ├── center.sh
+│   ├── display_logo.sh
 │   ├── of_manager.sh
 │   └── of_operation.sh
 ├── conf/
 │   ├── of_manager.cfg
+│   ├── of_manager.logo
 │   └── of_manager_util.cfg
 └── log/
     └── of_manager.log
@@ -86,7 +144,7 @@ sh_tool/
 
 [![Documentation Status](https://readthedocs.org/projects/of_manager/badge/?version=latest)](https://of_manager.readthedocs.io/projects/of_manager/en/latest/?badge=latest)
 
-More documentation and info at:
+More documentation and info at
 * [https://of_manager.readthedocs.io/en/latest/](https://of_manager.readthedocs.io/en/latest/)
 * [https://www.gnu.org/software/bash/manual/](https://www.gnu.org/software/bash/manual/)
 
