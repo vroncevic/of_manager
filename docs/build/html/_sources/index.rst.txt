@@ -7,8 +7,8 @@ Developed in `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_ code: **1
 
 |GitHub shell checker|
 
-.. |GitHub shell checker| image:: https://github.com/vroncevic/of_manager/workflows/of_manager%20shell%20checker/badge.svg
-   :target: https://github.com/vroncevic/of_manager/actions?query=workflow%3A%22of_manager+shell+checker%22
+.. |GitHub shell checker| image:: https://github.com/vroncevic/of_manager/actions/workflows/of_manager_shell_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/of_manager/actions/workflows/of_manager_shell_checker.yml
 
 The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
@@ -23,7 +23,7 @@ other information that should be provided before the tool is installed.
    :target: https://github.com/vroncevic/of_manager/graphs/contributors
 
 .. |Documentation Status| image:: https://readthedocs.org/projects/of_manager/badge/?version=latest
-   :target: https://of_manager.readthedocs.io/projects/of_manager/en/latest/?badge=latest
+   :target: https://of-manager.readthedocs.io/projects/of_manager/en/latest/?badge=latest
 
 .. toctree::
     :hidden:
@@ -53,11 +53,6 @@ To install **of_manager** type the following
    cp -R ~/sh_tool/log/   /root/scripts/of_manager/ver.x.y/
 
 Or You can use Docker to create image/container.
-
-|GitHub docker checker|
-
-.. |GitHub docker checker| image:: https://github.com/vroncevic/of_manager/workflows/of_manager%20docker%20checker/badge.svg
-   :target: https://github.com/vroncevic/of_manager/actions?query=workflow%3A%22of_manager+docker+checker%22
 
 Dependencies
 -------------
@@ -99,7 +94,7 @@ Copyright and licence
 .. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
 
-Copyright (C) 2016 by `vroncevic.github.io/of_manager <https://vroncevic.github.io/of_manager>`_
+Copyright (C) 2016 - 2024 by `vroncevic.github.io/of_manager <https://vroncevic.github.io/of_manager>`_
 
 **of_manager** is free software; you can redistribute it and/or modify it
 under the same terms as Bash itself, either Bash version 4.2.47 or,
