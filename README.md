@@ -6,7 +6,7 @@
 
 Developed in **[bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))** code: **100%**.
 
-[![of_manager shell checker](https://github.com/vroncevic/of_manager/workflows/of_manager%20shell%20checker/badge.svg)](https://github.com/vroncevic/of_manager/actions?query=workflow%3A%22of_manager+shell+checker%22)
+[![of_manager_shell_checker](https://github.com/vroncevic/of_manager/actions/workflows/of_manager_shell_checker.yml/badge.svg)](https://github.com/vroncevic/of_manager/actions/workflows/of_manager_shell_checker.yml)
 
 The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
@@ -75,8 +75,6 @@ lrwxrwxrwx 1 root root 50 Nov 28 08:30 /root/bin/of_manager -> /root/scripts/of_
 
 Or You can use docker to create image/container.
 
-[![of_manager docker checker](https://github.com/vroncevic/of_manager/workflows/of_manager%20docker%20checker/badge.svg)](https://github.com/vroncevic/of_manager/actions?query=workflow%3A%22of_manager+docker+checker%22)
-
 ### Usage
 
 ```
@@ -95,13 +93,17 @@ Sun 28 Nov 2021 08:47:29 AM CET
 [check_root] Check permission for current session? [ok]
 [check_root] Done
 
-	                                                         
-	        __                                               
-	  ___  / _|  _ __ ___   __ _ _ __   __ _  __ _  ___ _ __ 
-	 / _ \| |_  | '_ ` _ \ / _` | '_ \ / _` |/ _` |/ _ \ '__|
-	| (_) |  _| | | | | | | (_| | | | | (_| | (_| |  __/ |   
-	 \___/|_|   |_| |_| |_|\__,_|_| |_|\__,_|\__, |\___|_|   
-	                                         |___/           
+                                                                                          
+              ████                                                                        
+             ░██░                                                  █████                  
+    ██████  ██████       ██████████   ██████   ███████   ██████   ██░░░██  █████  ██████  
+   ██░░░░██░░░██░       ░░██░░██░░██ ░░░░░░██ ░░██░░░██ ░░░░░░██ ░██  ░██ ██░░░██░░██░░█  
+  ░██   ░██  ░██         ░██ ░██ ░██  ███████  ░██  ░██  ███████ ░░██████░███████ ░██ ░   
+  ░██   ░██  ░██         ░██ ░██ ░██ ██░░░░██  ░██  ░██ ██░░░░██  ░░░░░██░██░░░░  ░██     
+  ░░██████   ░██   █████ ███ ░██ ░██░░████████ ███  ░██░░████████  █████ ░░██████░███     
+   ░░░░░░    ░░   ░░░░░ ░░░  ░░  ░░  ░░░░░░░░ ░░░   ░░  ░░░░░░░░  ░░░░░   ░░░░░░ ░░░      
+                                                                                          
+                                                                                          
 	                                                         
 		Info   github.io/op_manager ver.2.0 
 		Issue  github.io/issue
@@ -142,17 +144,17 @@ sh_tool/
 
 ### Docs
 
-[![Documentation Status](https://readthedocs.org/projects/of_manager/badge/?version=latest)](https://of_manager.readthedocs.io/projects/of_manager/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/of_manager/badge/?version=latest)](https://of-manager.readthedocs.io/projects/of_manager/en/latest/?badge=latest)
 
 More documentation and info at
-* [https://of_manager.readthedocs.io/en/latest/](https://of_manager.readthedocs.io/en/latest/)
+* [https://of_manager.readthedocs.io/en/latest/](https://of-manager.readthedocs.io/en/latest/)
 * [https://www.gnu.org/software/bash/manual/](https://www.gnu.org/software/bash/manual/)
 
 ### Copyright and licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2016 by [vroncevic.github.io/of_manager](https://vroncevic.github.io/of_manager)
+Copyright (C) 2016 - 2024 by [vroncevic.github.io/of_manager](https://vroncevic.github.io/of_manager)
 
 **of_manager** is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,
