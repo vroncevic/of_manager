@@ -1,6 +1,6 @@
-<img align="right" src="https://raw.githubusercontent.com/vroncevic/of_manager/dev/docs/of_manager_logo.png" width="25%">
-
 # Office management
+
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/of_manager/dev/docs/of_manager_logo.png" width="25%">
 
 **of_manager** is shell tool for controlling/operating Open Office.
 
@@ -35,7 +35,7 @@ Navigate to release **[page](https://github.com/vroncevic/of_manager/releases)**
 
 To install **of_manager** type the following
 
-```
+```bash
 tar xvzf of_manager-x.y.tar.gz
 cd of_manager-x.y
 cp -R ~/sh_tool/bin/   /root/scripts/of_manager/ver.x.y/
@@ -44,7 +44,8 @@ cp -R ~/sh_tool/log/   /root/scripts/of_manager/ver.x.y/
 ```
 
 Self generated setup script and execution
-```
+
+```bash
 ./of_manager_setup.sh
 
 [setup] installing App/Tool/Script of_manager
@@ -77,7 +78,7 @@ Or You can use docker to create image/container.
 
 ### Usage
 
-```
+```bash
 # Create symlink for shell tool
 ln -s /root/scripts/of_manager/ver.x.y/bin/of_manager.sh /root/bin/of_manager
 
@@ -127,7 +128,8 @@ Sun 28 Nov 2021 08:47:29 AM CET
 **of_manager** is based on MOP.
 
 Shell tool structure
-```
+
+```bash
 sh_tool/
 ├── bin/
 │   ├── center.sh
