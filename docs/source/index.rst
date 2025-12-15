@@ -46,11 +46,11 @@ To install **of_manager** type the following
 
 .. code-block:: bash
 
-   tar xvzf of_manager-x.y.tar.gz
-   cd of_manager-x.y
-   cp -R ~/sh_tool/bin/   /root/scripts/of_manager/ver.x.y/
-   cp -R ~/sh_tool/conf/  /root/scripts/of_manager/ver.x.y/
-   cp -R ~/sh_tool/log/   /root/scripts/of_manager/ver.x.y/
+   tar xvzf of_manager-3.0.tar.gz
+   cd of_manager-3.0
+   cp -R ~/sh_tool/bin/   /root/scripts/of_manager/ver.3.0/
+   cp -R ~/sh_tool/conf/  /root/scripts/of_manager/ver.3.0/
+   cp -R ~/sh_tool/log/   /root/scripts/of_manager/ver.3.0/
 
 Or You can use Docker to create image/container.
 
@@ -72,10 +72,7 @@ Shell tool structure
 
    sh_tool/
    ├── bin/
-   │   ├── center.sh
-   │   ├── display_logo.sh
-   │   ├── of_manager.sh
-   │   └── of_operation.sh
+   │   └── of_manager.sh
    ├── conf/
    │   ├── of_manager.cfg
    │   ├── of_manager.logo
@@ -94,7 +91,7 @@ Copyright and licence
 .. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
 
-Copyright (C) 2016 - 2024 by `vroncevic.github.io/of_manager <https://vroncevic.github.io/of_manager>`_
+Copyright (C) 2016 - 2026 by `vroncevic.github.io/of_manager <https://vroncevic.github.io/of_manager>`_
 
 **of_manager** is free software; you can redistribute it and/or modify it
 under the same terms as Bash itself, either Bash version 4.2.47 or,
