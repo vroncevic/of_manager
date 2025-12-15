@@ -36,11 +36,11 @@ Navigate to release **[page](https://github.com/vroncevic/of_manager/releases)**
 To install **of_manager** type the following
 
 ```bash
-tar xvzf of_manager-x.y.tar.gz
-cd of_manager-x.y
-cp -R ~/sh_tool/bin/   /root/scripts/of_manager/ver.x.y/
-cp -R ~/sh_tool/conf/  /root/scripts/of_manager/ver.x.y/
-cp -R ~/sh_tool/log/   /root/scripts/of_manager/ver.x.y/
+tar xvzf of_manager-3.0.tar.gz
+cd of_manager-3.0
+cp -R ~/sh_tool/bin/   /root/scripts/of_manager/ver.3.0/
+cp -R ~/sh_tool/conf/  /root/scripts/of_manager/ver.3.0/
+cp -R ~/sh_tool/log/   /root/scripts/of_manager/ver.3.0/
 ```
 
 Self generated setup script and execution
@@ -49,7 +49,7 @@ Self generated setup script and execution
 ./of_manager_setup.sh
 
 [setup] installing App/Tool/Script of_manager
-	Sun 28 Nov 2021 08:30:35 AM CET
+	Mon Dec 15 04:45:31 PM CET 2025
 [setup] clean up App/Tool/Script structure
 [setup] copy App/Tool/Script structure
 [setup] remove github editor configuration files
@@ -57,12 +57,9 @@ Self generated setup script and execution
 [setup] create symbolic link of App/Tool/Script
 [setup] done
 
-/root/scripts/of_manager/ver.2.0/
+/root/scripts/of_manager/ver.3.0/
 ├── bin/
-│   ├── center.sh
-│   ├── display_logo.sh
-│   ├── of_manager.sh
-│   └── of_operation.sh
+│   └── of_manager.sh
 ├── conf/
 │   ├── of_manager.cfg
 │   ├── of_manager.logo
@@ -71,7 +68,7 @@ Self generated setup script and execution
     └── of_manager.log
 
 3 directories, 8 files
-lrwxrwxrwx 1 root root 50 Nov 28 08:30 /root/bin/of_manager -> /root/scripts/of_manager/ver.2.0/bin/of_manager.sh
+lrwxrwxrwx 1 root root 50 Dec 15 04:45 /root/bin/of_manager -> /root/scripts/of_manager/ver.3.0/bin/of_manager.sh
 ```
 
 Or You can use docker to create image/container.
@@ -80,7 +77,7 @@ Or You can use docker to create image/container.
 
 ```bash
 # Create symlink for shell tool
-ln -s /root/scripts/of_manager/ver.x.y/bin/of_manager.sh /root/bin/of_manager
+ln -s /root/scripts/of_manager/ver.3.0/bin/of_manager.sh /root/bin/of_manager
 
 # Setting PATH
 export PATH=${PATH}:/root/bin/
@@ -88,25 +85,25 @@ export PATH=${PATH}:/root/bin/
 # Control/operating Open Office
 of_manager 
 
-of_manager ver.2.0
-Sun 28 Nov 2021 08:47:29 AM CET
+of_manager ver.3.0
+Mon Dec 15 04:45:51 PM CET 2025
 
 [check_root] Check permission for current session? [ok]
 [check_root] Done
 
                                                                                           
               ████                                                                        
-             ░██░                                                  █████                  
-    ██████  ██████       ██████████   ██████   ███████   ██████   ██░░░██  █████  ██████  
-   ██░░░░██░░░██░       ░░██░░██░░██ ░░░░░░██ ░░██░░░██ ░░░░░░██ ░██  ░██ ██░░░██░░██░░█  
-  ░██   ░██  ░██         ░██ ░██ ░██  ███████  ░██  ░██  ███████ ░░██████░███████ ░██ ░   
-  ░██   ░██  ░██         ░██ ░██ ░██ ██░░░░██  ░██  ░██ ██░░░░██  ░░░░░██░██░░░░  ░██     
-  ░░██████   ░██   █████ ███ ░██ ░██░░████████ ███  ░██░░████████  █████ ░░██████░███     
-   ░░░░░░    ░░   ░░░░░ ░░░  ░░  ░░  ░░░░░░░░ ░░░   ░░  ░░░░░░░░  ░░░░░   ░░░░░░ ░░░      
-                                                                                          
+             ░██░                                                                         
+    ██████  ██████       ██████████   ██████   ███████   ██████    █████   █████  ██████  
+   ██░░░░██░░░██░       ░░██░░██░░██ ░░░░░░██ ░░██░░░██ ░░░░░░██  ██░░░██ ██░░░██░░██░░█  
+  ░██   ░██  ░██         ░██ ░██ ░██  ███████  ░██  ░██  ███████ ░██  ░██░███████ ░██ ░   
+  ░██   ░██  ░██         ░██ ░██ ░██ ██░░░░██  ░██  ░██ ██░░░░██ ░░██████░██░░░░  ░██     
+  ░░██████   ░██   █████ ███ ░██ ░██░░████████ ███  ░██░░████████ ░░░░░██░░██████░███     
+   ░░░░░░    ░░   ░░░░░ ░░░  ░░  ░░  ░░░░░░░░ ░░░   ░░  ░░░░░░░░   █████  ░░░░░░ ░░░      
+                                                                  ░░░░░                   
                                                                                           
 	                                                         
-		Info   github.io/op_manager ver.2.0 
+		Info   github.io/op_manager ver.3.0 
 		Issue  github.io/issue
 		Author vroncevic.github.io
 
@@ -132,10 +129,7 @@ Shell tool structure
 ```bash
 sh_tool/
 ├── bin/
-│   ├── center.sh
-│   ├── display_logo.sh
-│   ├── of_manager.sh
-│   └── of_operation.sh
+│   └── of_manager.sh
 ├── conf/
 │   ├── of_manager.cfg
 │   ├── of_manager.logo
@@ -156,7 +150,7 @@ More documentation and info at
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2016 - 2024 by [vroncevic.github.io/of_manager](https://vroncevic.github.io/of_manager)
+Copyright (C) 2016 - 2026 by [vroncevic.github.io/of_manager](https://vroncevic.github.io/of_manager)
 
 **of_manager** is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,
